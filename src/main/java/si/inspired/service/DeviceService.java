@@ -43,7 +43,7 @@ public class DeviceService {
                          @Qualifier("GeoIPCity") DatabaseReader databaseReader,
                          Parser parser,
                          JavaMailSender mailSender,
-                         MessageSource messages) {
+                         @Qualifier("messageSource") MessageSource messages) {
         this.deviceMetadataRepository = deviceMetadataRepository;
         this.databaseReader = databaseReader;
         this.parser = parser;
@@ -96,7 +96,7 @@ public class DeviceService {
         String deviceDetails = UNKNOWN;
 
         Client client = parser.parse(userAgent);
-        if (Objects.nonNull(client)) {
+        if (nonNull(client)) {
             deviceDetails = client.userAgent.family + " " + client.userAgent.major + "." + client.userAgent.minor +
                     " - " + client.os.family + " " + client.os.major + "." + client.os.minor;
         }
@@ -111,8 +111,8 @@ public class DeviceService {
         InetAddress ipAddress = InetAddress.getByName(ip);
 
         CityResponse cityResponse = databaseReader.city(ipAddress);
-        if (Objects.nonNull(cityResponse) &&
-                Objects.nonNull(cityResponse.getCity()) &&
+        if (nonNull(cityResponse) &&
+                nonNull(cityResponse.getCity()) &&
                 !Strings.isNullOrEmpty(cityResponse.getCity().getName())) {
 
             location = cityResponse.getCity().getName();
