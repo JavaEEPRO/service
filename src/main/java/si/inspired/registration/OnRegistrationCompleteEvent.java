@@ -1,4 +1,4 @@
-package si.inspired.registration.listener;
+package si.inspired.registration;
 
 import org.springframework.context.ApplicationEvent;
 import si.inspired.persistence.model.User;
