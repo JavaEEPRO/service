@@ -1,6 +1,7 @@
 package si.inspired.web.dto;
 
 import si.inspired.validation.PasswordMatches;
+import si.inspired.validation.ValidEmail;
 import si.inspired.validation.ValidPassword;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,6 +23,7 @@ public class UserDto {
     @Size(min = 1)
     private String matchingPassword;
 
+    @ValidEmail
     @NotNull
     @Size(min = 1, message = "{Size.userDto.email}")
     private String email;
