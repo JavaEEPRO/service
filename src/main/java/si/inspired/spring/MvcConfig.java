@@ -13,7 +13,8 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-
+import si.inspired.validation.EmailValidator;
+import si.inspired.validation.PasswordMatchesValidator;
 import java.util.Locale;
 
 @Configuration
@@ -78,6 +79,16 @@ public class MvcConfig implements WebMvcConfigurer {
         final CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
         cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
         return cookieLocaleResolver;
+    }
+
+    @Bean
+    public EmailValidator usernameValidator() {
+        return new EmailValidator();
+    }
+
+    @Bean
+    public PasswordMatchesValidator passwordMatchesValidator() {
+        return new PasswordMatchesValidator();
     }
 
     @Bean
