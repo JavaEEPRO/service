@@ -1,6 +1,7 @@
 package si.inspired.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,6 +35,7 @@ public class RegistrationController {
     @Autowired
     private ISecurityUserService securityUserService;
 
+    @Qualifier("messageSource")
     @Autowired
     private MessageSource messages;
 
