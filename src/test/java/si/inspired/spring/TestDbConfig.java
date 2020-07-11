@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableJpaRepositories("si.inspired.persistence.dao")
-@EntityScan("com.baeldung.persistence.model")
+@EntityScan("si.inspired.persistence.model")
 @EnableAutoConfiguration
 public class TestDbConfig {
 
